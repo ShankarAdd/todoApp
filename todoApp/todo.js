@@ -49,16 +49,14 @@ function display(store){
         childele.appendChild(doneButton);
         doneButton.onclick = () =>{
             const doneThings=document.querySelector('#todoDone')
-            var id=store._id;
-            axios.get('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo/'+id)
-            .then((res) =>{
-                for(let i=0;i<res.data.length;i++){
-                    if(res.data[i].isDone === true){
-                        res.data[i].appendChild(doneThings)
-                    }
-                }
-            })
-            .catch((err) => console.log(err))
+            //This is to display when the todo is done
+            parent.removeChild(childele);
+            const doneOne=document.createElement('li');
+            doneOne.textContent = `${store.name} - ${store.description}`;
+            doneThings.appendChild(doneOne)
+            const id=store._id;
+            axios.delete('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo/'+id)
+                .then((res) =>console.log(res))
         }
     }
 }
