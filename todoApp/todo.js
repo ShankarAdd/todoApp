@@ -8,14 +8,14 @@ function savetodos(event){
     event.preventDefault()
     const name=event.target.name.value;
     const description=event.target.description.value;
-
+    const isDone=false;
     const store={
         name,
         description,
-        isDone : false
+        isDone
     };
 
-    axios.post('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo',store)
+    axios.post('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo',store)
     .then((res) =>display(res.data))
     .catch((err) => console.log(err))
     
@@ -38,7 +38,7 @@ function display(store){
 
         deletetodo.onclick= () =>{
             const id=store._id;
-            axios.delete('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo/' +id )
+            axios.delete('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo/' +id )
             .catch((err) =>console.log(err))
             parent.removeChild(childele);
         }
@@ -55,17 +55,34 @@ function display(store){
             doneOne.textContent = `${store.name} - ${store.description}`;
             doneThings.appendChild(doneOne)
             const id=store._id;
-            axios.delete('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo/'+id)
+            axios.
+                put(`https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo/${id}`,
+                { 
+                    isDone: true,
+                    name: store.name,
+                    description: store.description,
+                })
                 .then((res) =>console.log(res))
         }
     }
 }
 window.addEventListener("DOMContentLoaded", () =>{
-    axios.get('https://crudcrud.com/api/374bb9d0a8c949f299226daef39e74a5/dataTodo')
+    axios.get('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo')
         .then((res) =>{
             for(let i=0;i<res.data.length;i++){
-                display(res.data[i]);
+                if(res.data[i].isDone === true){
+                    displayDone(res.data[i])
+                }
+                else{
+                    display(res.data[i]);
+                }
             }
         })
         .catch((err) => console.log(err))
 })
+function displayDone(afterTodoDone) {
+    const doneOne = document.createElement('li');
+    const doneThings=document.querySelector('#todoDone')
+    doneOne.textContent = `${afterTodoDone.name} - ${afterTodoDone.description}`;
+    doneThings.appendChild(doneOne);
+}
