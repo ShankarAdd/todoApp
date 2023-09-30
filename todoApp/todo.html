@@ -4,23 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Todo App</title>
 </head>
 
 <body>
-    <form id="todoApp" onsubmit="savetodos(event)">
-        <label for="name">TodoName</label><br>
-        <input type="text" id="name" placeholder="Enter name"><br><br>
-        <label for="description">Description</label><br>
-        <input type="text" id="description" placeholder="Enter description"><br><br>
-        <button type="submit">Add Item</button>
-    </form>
-    <ul id="remaining">
-        <h4>Todos remaining</h4>
-    </ul>
-    <ul id="todoDone">
-        <h4>Todos Done</h4>
-    </ul>
+    <div class="best">
+        <form id="todoApp" onsubmit="savetodos(event)">
+            <label for="name">TodoName</label><br><br>
+            <input type="text" id="name" placeholder="Enter name"><br><br>
+            <label for="description">Description</label><br><br>
+            <input type="text" id="description" placeholder="Enter description"><br><br>
+            <button type="submit" class="btn">Add Item</button>
+        </form>
+    </div>
+    <div class="remain">
+        <ul id="remaining">
+            <h4>Todos remaining</h4>
+        </ul>
+        <ul id="todoDone">
+            <h4>Todos Done</h4>
+        </ul>
+    </div>
+   
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="todo.js"></script>
 </body>

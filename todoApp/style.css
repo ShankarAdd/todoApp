@@ -1,0 +1,40 @@
+body {
+    background-color: #fafafa;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.best{
+    background-color: lightgrey;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 7px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+}
+.remain{
+    background-color: rgb(243, 247, 248);
+    font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    color: blueviolet;
+}
+.btn{
+    background-color: rgb(208, 243, 239);
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.btn:hover {
+    background-color: rgb(57, 146, 247);
+}

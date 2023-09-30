@@ -1,8 +1,8 @@
-const forms=document.getElementById('#todoApp');
-const todoName=document.getElementById('#name');
-const tdoDescription=document.getElementById('#description');
-const pending=document.getElementById('#remaining');
-const doing=document.getElementById('#todoDone');
+const forms=document.getElementById('todoApp');
+const todoName=document.getElementById('name');
+const tdoDescription=document.getElementById('description');
+const pending=document.getElementById('remaining');
+const doing=document.getElementById('todoDone');
 
 function savetodos(event){
     event.preventDefault()
@@ -15,7 +15,7 @@ function savetodos(event){
         isDone
     };
 
-    axios.post('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo',store)
+    axios.post('https://crudcrud.com/api/e80896a6d6384c3c9a7cea3052f6f02c/dataTodo',store)
     .then((res) =>display(res.data))
     .catch((err) => console.log(err))
     
@@ -38,7 +38,7 @@ function display(store){
 
         deletetodo.onclick= () =>{
             const id=store._id;
-            axios.delete('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo/' +id )
+            axios.delete('https://crudcrud.com/api/e80896a6d6384c3c9a7cea3052f6f02c/dataTodo/' +id )
             .catch((err) =>console.log(err))
             parent.removeChild(childele);
         }
@@ -56,7 +56,7 @@ function display(store){
             doneThings.appendChild(doneOne)
             const id=store._id;
             axios.
-                put(`https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo/${id}`,
+                put(`https://crudcrud.com/api/e80896a6d6384c3c9a7cea3052f6f02c/dataTodo/${id}`,
                 { 
                     isDone: true,
                     name: store.name,
@@ -67,7 +67,7 @@ function display(store){
     }
 }
 window.addEventListener("DOMContentLoaded", () =>{
-    axios.get('https://crudcrud.com/api/8921a209eb66423f94ee080f562f03f4/dataTodo')
+    axios.get('https://crudcrud.com/api/e80896a6d6384c3c9a7cea3052f6f02c/dataTodo')
         .then((res) =>{
             for(let i=0;i<res.data.length;i++){
                 if(res.data[i].isDone === true){
